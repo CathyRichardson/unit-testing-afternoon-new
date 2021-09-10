@@ -10,10 +10,12 @@ module.exports = {
       accum[user.id] = user;
       return accum;
     }, {});
-    return posts.map(post => {
-      post.displayName = `${userDict[post.userId].first} ${
-        userDict[post.userId].last
-      }`;
+    let filteredPosts = posts.filter(post => {
+      return userDict[post.userId]
+    })
+    return filteredPosts.map(post => {
+      post.displayName = `${userDict[post.userId].first} ${userDict[post.userId].last
+        }`;
       return post;
     });
   },
