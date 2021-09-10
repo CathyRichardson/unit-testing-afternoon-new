@@ -40,5 +40,13 @@
     ]
   },
   "proxy": "http://localhost:4000",
-  "main": "./server/index.js"
+  "main": "./server/index.js",
+  "devDependencies": {
+    "@testing-library/react": "^12.0.0"
+  },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "<rootDir>/src/__tests__/__data__"
+    ]
+  }
 }
