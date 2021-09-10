@@ -27,4 +27,10 @@ test(' attachUserName: the first post returned has a property displayName', () =
     expect(result[0]).toHaveProperty('displayName');
 });
 
+test(' attachUserName: removes any post with no matching user', () => {
+    const newPosts = attachUserName(users, posts);
+    const deletedPost = posts[4]; // the bad post has index 4
+    expect(newPosts).not.toContainEqual(deletedPost);
+});
+
 
