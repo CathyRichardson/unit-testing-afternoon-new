@@ -2,7 +2,7 @@ import React from 'react';
 import { render, act } from '@testing-library/react';
 import Post from '../views/Post';
 import axios from 'axios';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 import { posts } from './__data__/testData';
 
 it('Post component should render a post', async () => {
@@ -12,9 +12,9 @@ it('Post component should render a post', async () => {
         .spyOn(axios, 'get')
         .mockImplementation(() => {
             return Promise.resolve({
-                data: posts
+                data: post
             })
-        })
+        });
 
     await act(async () => {
         let renderObj = render(
@@ -24,6 +24,5 @@ it('Post component should render a post', async () => {
         );
         container = renderObj.container;
     });
-
     expect(container.textContent).toContain(post.text);
 })
